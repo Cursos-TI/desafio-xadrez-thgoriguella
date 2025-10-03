@@ -4,7 +4,6 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
 
@@ -17,13 +16,57 @@ int main() {
     // Implementação de Movimentação da Rainha
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
 
+
+//RECURSIVA
+void MTORRE(int casas) {
+    if (casas > 0) {
+        printf("DIREITA!\n");
+        MTORRE(casas - 1);
+    }
     
-    //REGISTRO DAS VARIAVEIS
+}
+//RECURSIVA + LOOPS ANINHADOS
+void MBISPO(int casas) {
+    if (casas > 0) {
+        for (int p = 0; p < 1; p++) {
+            printf("CIMA, ");
+        }
+        for (int i = 0; i < 1; i++) {
+            printf("DIREITA!\n");
+        }
+        MBISPO(casas - 1);  
+             
+    }
     
-    int TORRE = 5;
-    int BISPO = 5;
-    int CAVALO = 1;
-    int RAINHA = 8;
+}
+//RECURSIVA
+void MRAINHA(int casas) {
+    if (casas > 0) {
+        printf("ESQUERDA!\n");
+        MRAINHA(casas - 1);
+    }
+    
+}
+//RECURSIVA + LOOPS ANINHADOS
+void MCAVALO() {
+    int mcima = 2;
+    int mdireita = 1;
+
+    for (int i = 0; i < mcima + mdireita; i++) {
+        if (i < mcima) {
+            printf("CIMA\n");
+            continue;
+        }
+        if (i == mcima) {
+            printf("DIRETIA!\n");
+            break;
+        }
+    }
+    
+}
+
+
+int main() {
 
     int option;
    
@@ -40,45 +83,23 @@ int main() {
        
         switch(option) {
             case 1:
-                printf("*---MOVIMENTOS DA PEÇA TORRE---*\n");
-                int i = 1;
-                while (i <= TORRE)
-                {
-                   printf("DIREITA!\n");
-                   i++;
-                }
+                printf("*---MOVIMENTOS DA PEÇA TORRE---*\n"); 
+                MTORRE(5);
                 printf("\n");
                 break;
             case 2:
-                printf("*---MOVIMENTOS DA PEÇA BISPO---*\n");
-                int p = 1;
-                while (p <= BISPO)
-                {
-                   printf("CIMA, DIREITA!\n");
-                   p++;
-                }
+                printf("*---MOVIMENTOS DA PEÇA BISPO---*\n"); 
+                MBISPO(5);
                 printf("\n");
                 break;
             case 3:
                 printf("*---MOVIMENTOS DA PEÇA CAVALO---*\n");
-                while (CAVALO--)
-                {
-                    for(int c = 0; c < 2; c++) {
-                   printf("BAIXO!\n"); //IMPRIME "CIMA" DUAS VEZES
-                   printf("\n");
-                    }
-                printf("DIREITA!\n"); //IMPRIME "DIREITA" UMA VEZ
+                MCAVALO();
                 printf("\n");
-                }
                 break;
             case 4:
                 printf("*---MOVIMENTOS DA PEÇA RAINHA---*\n");
-                int r = 1;
-                while (r <= RAINHA)
-                {
-                   printf("ESQUERDA!\n");
-                   r++;
-                }
+                MRAINHA(8);
                 printf("\n");
                 break;
             case 5:
